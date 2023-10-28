@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Temperature Converter</title>
+</head>
+<style>
+    body{
+        background-color: rgb(234, 192, 219);
+    }
+    h1{
+        color: rgba(91, 7, 63, 0.822);
+        font-size: 29px;
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .border{
+        border: 2px solid purple;
+        width: 400px;
+        height: 67px;
+    }
+    
+</style>
+<body>
+
+    <h1>Temperature Converter App</h1>
+    <form class="border" id="tempConverterForm">
+        <label for="celsius" style="color: blueviolet; font-size: 29px;">Enter Temperature in Celsius:</label>
+        <input type="number" id="celsius" placeholder="Celsius" required>
+        <input type="submit" value="Convert">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('tempConverterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            // Get the Celsius temperature from the input field
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            
+            // Check if the input is a valid number
+            if (!isNaN(celsius)) {
+                // Convert Celsius to Fahrenheit
+                const fahrenheit = (celsius * 9/5) + 32;
+                
+                // Display the result
+                document.getElementById('result').innerHTML = `${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F`;
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter a valid temperature in Celsius.';
+            }
+        });
+    </script>
+</body>
+</html>
